@@ -90,7 +90,7 @@ DisplayTitleScreen:
 	dec b
 	jr nz, .pokemonLogoLastTileRowLoop
 
-	call DrawPlayerCharacter
+	;call DrawPlayerCharacter
 
 ; put a pokeball in the player's hand
 	ld hl, wOAMBuffer + $28
@@ -98,17 +98,17 @@ DisplayTitleScreen:
 	ld [hl], a
 
 ; place tiles for title screen copyright
-	coord hl, 2, 17
-	ld de, .tileScreenCopyrightTiles
-	ld b, $10
+	;coord hl, 2, 17
+	;ld de, .tileScreenCopyrightTiles
+	;ld b, $10
 .tileScreenCopyrightTilesLoop
-	ld a, [de]
-	ld [hli], a
-	inc de
-	dec b
-	jr nz, .tileScreenCopyrightTilesLoop
+	;ld a, [de]
+	;ld [hli], a
+	;inc de
+	;dec b
+	;jr nz, .tileScreenCopyrightTilesLoop
 
-	jr .next
+	;jr .next
 
 .tileScreenCopyrightTiles
 	db $41,$42,$43,$42,$44,$42,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E ; ©'95.'96.'98 GAME FREAK inc.
@@ -118,10 +118,10 @@ DisplayTitleScreen:
 	call LoadScreenTilesFromBuffer2
 	call EnableLCD
 IF DEF(_RED)
-	ld a,CHARMANDER ; which Pokemon to show first on the title screen
+	ld a,MEW ; which Pokemon to show first on the title screen
 ENDC
 IF DEF(_BLUE)
-	ld a,SQUIRTLE ; which Pokemon to show first on the title screen
+	ld a,MEW ; which Pokemon to show first on the title screen
 ENDC
 
 	ld [wTitleMonSpecies], a
@@ -386,9 +386,9 @@ INCLUDE "data/title_mons.asm"
 
 ; prints version text (red, blue)
 PrintGameVersionOnTitleScreen:
-	coord hl, 7, 8
-	ld de, VersionOnTitleScreenText
-	jp PlaceString
+	;coord hl, 7, 8
+	;ld de, VersionOnTitleScreenText
+	;jp PlaceString
 
 ; these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:

@@ -306,7 +306,7 @@ OakSpeech:
 	;ld a,1
 	;ld [wUpdateSpritesEnabled],a
 	;ld c,50
-	;call DelayFrames
+	call DelayFrames
 	;call GBFadeOutToWhite
 	jp ClearScreen
 OakSpeechText1:

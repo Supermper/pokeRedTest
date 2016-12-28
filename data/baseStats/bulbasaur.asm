@@ -15,8 +15,8 @@ dw BulbasaurPicBack
 ; attacks known at lvl 0
 db TACKLE
 db GROWL
-db 0
-db 0
+db RAZOR_LEAF
+db MEGA_DRAIN
 db 3 ; growth rate
 ; learnset
 	tmlearn 3,6,8

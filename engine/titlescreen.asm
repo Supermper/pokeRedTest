@@ -151,7 +151,7 @@ ENDC
 	cp -3
 	jr nz, .skipPlayingSound
 	ld a, SFX_INTRO_CRASH
-	call PlaySound
+	;call PlaySound
 .skipPlayingSound
 	ld a, [hli]
 	ld e, a
@@ -210,7 +210,7 @@ ENDC
 	call LoadScreenTilesFromBuffer2
 	call PrintGameVersionOnTitleScreen
 	call Delay3
-	call WaitForSoundToFinish
+	;call WaitForSoundToFinish
 	ld a, MUSIC_TITLE_SCREEN
 	ld [wNewSoundID], a
 	call PlaySound

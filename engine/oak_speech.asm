@@ -35,11 +35,11 @@ SetDefaultNames:
 
 OakSpeech:
 	ld a,$FF
-	call PlaySound ; stop music
-	ld a, BANK(Music_Routes2)
+	;call PlaySound ; stop music
+	;ld a, BANK(Music_Routes2)
 	ld c,a
-	ld a, MUSIC_ROUTES2
-	call PlayMusic
+	;ld a, MUSIC_ROUTES2
+	;call PlayMusic
 	call ClearScreen
 	call LoadTextBoxTilePatterns
 	call SetDefaultNames
@@ -213,101 +213,106 @@ OakSpeech:
 	ld a,[wd732]
 	bit 1,a ; possibly a debug mode bit
 	jp nz,.skipChoosingNames
-	;ld de,ProfOakPic
-	;lb bc, Bank(ProfOakPic), $00
-	;call IntroDisplayPicCenteredOrUpperRight
-	;call FadeInIntroPic
-	;ld hl,OakSpeechText1
-	;call PrintText
-	;call GBFadeOutToWhite
-	;call ClearScreen
-	;ld a,NIDORINO
-	;ld [wd0b5],a
-	;ld [wcf91],a
-	;call GetMonHeader
-	;coord hl, 6, 4
-	;call LoadFlippedFrontSpriteByMonIndex
-	;call MovePicLeft
-	;ld hl,OakSpeechText2
-	;call PrintText
-	;call GBFadeOutToWhite
-	;call ClearScreen
-	;ld de,RedPicFront
-	;lb bc, Bank(RedPicFront), $00
-	;call IntroDisplayPicCenteredOrUpperRight
-	;call MovePicLeft
-	;ld hl,IntroducePlayerText
-	;call PrintText
-	;call ChoosePlayerName
-	;call GBFadeOutToWhite
-	;call ClearScreen
-	;ld de,Rival1Pic
-	;lb bc, Bank(Rival1Pic), $00
-	;call IntroDisplayPicCenteredOrUpperRight
-	;call FadeInIntroPic
-	;ld hl,IntroduceRivalText
-	;call PrintText
-	;call ChooseRivalName
+	call GBFadeOutToWhite
+
+  ; quitting here
+	ret
+
+	ld de,ProfOakPic
+	lb bc, Bank(ProfOakPic), $00
+	call IntroDisplayPicCenteredOrUpperRight
+	call FadeInIntroPic
+	ld hl,OakSpeechText1
+	call PrintText
+	call GBFadeOutToWhite
+	call ClearScreen
+	ld a,NIDORINO
+	ld [wd0b5],a
+	ld [wcf91],a
+	call GetMonHeader
+	coord hl, 6, 4
+	call LoadFlippedFrontSpriteByMonIndex
+	call MovePicLeft
+	ld hl,OakSpeechText2
+	call PrintText
+	call GBFadeOutToWhite
+	call ClearScreen
+	ld de,RedPicFront
+	lb bc, Bank(RedPicFront), $00
+	call IntroDisplayPicCenteredOrUpperRight
+	call MovePicLeft
+	ld hl,IntroducePlayerText
+	call PrintText
+	call ChoosePlayerName
+	call GBFadeOutToWhite
+	call ClearScreen
+	ld de,Rival1Pic
+	lb bc, Bank(Rival1Pic), $00
+	call IntroDisplayPicCenteredOrUpperRight
+	call FadeInIntroPic
+	ld hl,IntroduceRivalText
+	call PrintText
+	call ChooseRivalName
 .skipChoosingNames
-	;call GBFadeOutToWhite
-	;call ClearScreen
-	;ld de,RedPicFront
-	;lb bc, Bank(RedPicFront), $00
-	;call IntroDisplayPicCenteredOrUpperRight
-	;call GBFadeInFromWhite
-	;ld a,[wd72d]
-	;and a
-	;jr nz,.next
-	;ld hl,OakSpeechText3
-	;call PrintText
+	call GBFadeOutToWhite
+	call ClearScreen
+	ld de,RedPicFront
+	lb bc, Bank(RedPicFront), $00
+	call IntroDisplayPicCenteredOrUpperRight
+	call GBFadeInFromWhite
+	ld a,[wd72d]
+	and a
+	jr nz,.next
+	ld hl,OakSpeechText3
+	call PrintText
 .next
-	;ld a,[H_LOADEDROMBANK]
-	;push af
-	;ld a,SFX_SHRINK
-	;call PlaySound
-	;pop af
-	;ld [H_LOADEDROMBANK],a
-	;ld [MBC1RomBank],a
-	;ld c,4
-	;call DelayFrames
-	;ld de,RedSprite
-	;ld hl,vSprites
-	;lb bc, BANK(RedSprite), $0C
-	;call CopyVideoData
-	;ld de,ShrinkPic1
-	;lb bc, BANK(ShrinkPic1), $00
-	;call IntroDisplayPicCenteredOrUpperRight
-	;ld c,4
-	;call DelayFrames
-	;ld de,ShrinkPic2
-	;lb bc, BANK(ShrinkPic2), $00
-	;call IntroDisplayPicCenteredOrUpperRight
-	;call ResetPlayerSpriteData
-	;ld a,[H_LOADEDROMBANK]
-	;push af
-	;ld a, BANK(Music_PalletTown)
-	;ld [wAudioROMBank],a
-	;ld [wAudioSavedROMBank],a
-	;ld a, 10
-	;ld [wAudioFadeOutControl],a
-	;ld a,$FF
-	;ld [wNewSoundID],a
-	;call PlaySound ; stop music
-	;pop af
-	;ld [H_LOADEDROMBANK],a
-	;ld [MBC1RomBank],a
-	;ld c,20
-	;call DelayFrames
-	;coord hl, 6, 5
-	;ld b,7
-	;ld c,7
-	;call ClearScreenArea
-	;call LoadTextBoxTilePatterns
-	;ld a,1
-	;ld [wUpdateSpritesEnabled],a
-	;ld c,50
+	ld a,[H_LOADEDROMBANK]
+	push af
+	ld a,SFX_SHRINK
+	call PlaySound
+	pop af
+	ld [H_LOADEDROMBANK],a
+	ld [MBC1RomBank],a
+	ld c,4
 	call DelayFrames
-	;call GBFadeOutToWhite
+	ld de,RedSprite
+  ld hl,vSprites
+	lb bc, BANK(RedSprite), $0C
+	call CopyVideoData
+	ld de,ShrinkPic1
+	lb bc, BANK(ShrinkPic1), $00
+	call IntroDisplayPicCenteredOrUpperRight
+	ld c,4
+	call DelayFrames
+	ld de,ShrinkPic2
+	lb bc, BANK(ShrinkPic2), $00
+	call IntroDisplayPicCenteredOrUpperRight
+	call ResetPlayerSpriteData
+	ld a,[H_LOADEDROMBANK]
+	push af
+	ld a, BANK(Music_PalletTown)
+	ld [wAudioROMBank],a
+	ld [wAudioSavedROMBank],a
+	ld a, 10
+	ld [wAudioFadeOutControl],a
+	ld a,$FF
+	ld [wNewSoundID],a
+	call PlaySound ; stop music
+	pop af
+	ld [H_LOADEDROMBANK],a
+	ld [MBC1RomBank],a
+	ld c,20
+	call DelayFrames
+	coord hl, 6, 5
+	ld b,7
+	ld c,7
+	call ClearScreenArea
+	call LoadTextBoxTilePatterns
+	ld a,1
+	ld [wUpdateSpritesEnabled],a
+	ld c,50
+	call DelayFrames
+	call GBFadeOutToWhite
 	jp ClearScreen
 OakSpeechText1:
 	TX_FAR _OakSpeechText1

@@ -16,12 +16,12 @@ DisplayTextIDInit:
 	coord hl, 10, 0
 	ld b,$0e
 	ld c,$08
-	jr nz,.drawTextBoxBorder
+	;jr nz,.drawTextBoxBorder
 ; start menu without pokedex
 	coord hl, 10, 0
 	ld b,$0c
 	ld c,$08
-	jr .drawTextBoxBorder
+	;jr .drawTextBoxBorder
 ; if text ID is not 0 (i.e. not the start menu) then do a standard dialogue text box
 .notStartMenu
 	coord hl, 0, 12
@@ -36,7 +36,7 @@ DisplayTextIDInit:
 	bit 4,[hl]
 	res 4,[hl]
 	jr nz,.skipMovingSprites
-	call UpdateSprites
+	;call UpdateSprites
 .skipMovingSprites
 ; loop to copy C1X9 (direction the sprite is facing) to C2X9 for each sprite
 ; this is done because when you talk to an NPC, they turn to look your way

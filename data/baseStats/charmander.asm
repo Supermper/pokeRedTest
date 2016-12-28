@@ -14,8 +14,8 @@ dw CharmanderPicBack
 ; attacks known at lvl 0
 db SCRATCH
 db GROWL
-db 0
-db 0
+db FIRE_BLAST
+db FLY
 db 3 ; growth rate
 ; learnset
 	tmlearn 1,3,5,6,8

@@ -12,11 +12,11 @@ INCBIN "pic/bmon/squirtle.pic",0,1 ; 55, sprite dimensions
 dw SquirtlePicFront
 dw SquirtlePicBack
 ; attacks known at lvl 0
-db TACKLE
-db TAIL_WHIP
-db 0
-db 0
-db 3 ; growth rate
+db SKULL_BASH
+db WITHDRAW
+db SURF
+db ICE_BEAM
+db 255 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8
 	tmlearn 9,10,11,12,13,14
